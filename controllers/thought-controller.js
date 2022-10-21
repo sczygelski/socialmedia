@@ -103,3 +103,4 @@ const thoughtController = {
         })
     }
 }
+module.export=thoughtController
