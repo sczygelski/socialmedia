@@ -1,5 +1,3 @@
-const { param } = require("../routes")
-
 const {Thought,Friend}=reqwuire('../models')
 
 const thoughtController = {
