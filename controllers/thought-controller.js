@@ -11,21 +11,21 @@ const thoughtController = {
                 res.sendStatus(400)
         })
     },
-    getoneThought(req,res){
-        Thought.findOne({_id: req.params.thoughtId})
-            .then((dbThoughtData)=>{
-                if(!dbThoughtData){
-                    res.status(404).json({message:'No thoughts have this id.'})
-                    return 
-                }
-                res.json(dbThoughtData)
-            })
-            .catch((err)=>{
-                console.log(err)
-                res.status(400).json(err)
-            })
+    // getoneThought(req,res){
+    //     Thought.findOne({_id: req.params.thoughtId})
+    //         .then((dbThoughtData)=>{
+    //             if(!dbThoughtData){
+    //                 res.status(404).json({message:'No thoughts have this id.'})
+    //                 return 
+    //             }
+    //             res.json(dbThoughtData)
+    //         })
+    //         .catch((err)=>{
+    //             console.log(err)
+    //             res.status(400).json(err)
+    //         })
 
-    },
+    // },
     createThought({params,body}, res){
         console.log(body)
         Thought.create(body)

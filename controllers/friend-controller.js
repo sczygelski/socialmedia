@@ -61,6 +61,34 @@ const friendController = {
         Friend.findOneAndDelete({_id:params.id})
             .then(dbFriendData=>res.json(dbFriendData))
             .catch(err=> res.json(err))
+    },
+    addFriend(req,res){
+        Friend.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: req.params.friendId } },
+            { new: true }
+        )
+            .then((dbFriendData)=>{
+                if(!dbFriendData){
+                    res.status(404).json({message: 'No users have this id.'})
+                }
+                res.json(dbFriendData)
+            })
+            .catch((err)=> res.json(err))
+    },
+    removeFriend(req,res){
+        Friend.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: req.params.friendId } },
+            { new: true }
+        )
+            .then((dbFriendData)=>{
+                if(!dbFriendData){
+                    res.status(404).json({message: 'No users have this id.'})
+                }
+                res.json(dbFriendData)
+            })
+            .catch((err)=> res.json(err))
     }        
 }
 module.exports=friendController
