@@ -1,4 +1,4 @@
-const {Thought,Friend}=reqwuire('../models')
+const {Thought,Friend}=require('../models')
 
 const thoughtController = {
     getAllThoughts(req,res){

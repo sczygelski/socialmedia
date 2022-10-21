@@ -14,5 +14,5 @@ mongoose.connect(process.env.MONGODB_URI || '', {
 })
 
 mongoose.set('debug', true)
-app.use(requre('./routes'))
+app.use(require('./routes'))
 app.listen(PORT, () => console.log(`connected on localhost:${PORT}`))
