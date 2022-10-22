@@ -5,10 +5,11 @@ const {
 //    getoneThought,
     createThought,
     addReaction,
+    removeThought,
     deleteReaction
 } = require('../../controllers/thought-controller')
 
-router.route('/').get(getAllThoughts)
+router.get('/', getAllThoughts)
 
 router.route('/:userId').post(createThought)
 

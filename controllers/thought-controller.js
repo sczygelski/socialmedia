@@ -1,7 +1,7 @@
 const {Thought,Friend}=require('../models')
 
 const thoughtController = {
-    getAllThoughts(req,res){
+    getAllThoughts: function(req,res){
         Thought.find({})
             .select('-__v')
             .sort({createdAt:-1})
@@ -26,7 +26,7 @@ const thoughtController = {
     //         })
 
     // },
-    createThought({params,body}, res){
+    createThought: function({params,body}, res){
         console.log(body)
         Thought.create(body)
             .then(({_id})=>{
@@ -45,7 +45,7 @@ const thoughtController = {
             })
             .catch((err)=>res.json(err))
     },
-    removeThought({params},res){
+    removeThought: function({params},res){
         Thought.findOneAndDelete({_id: params.thoughtId})
             .then((deletedThought)=>{
                 if(!deletedThought){
@@ -66,7 +66,7 @@ const thoughtController = {
             })
             .catch((err)=> res.json(err))
     },
-    addReaction(req,res){
+    addReaction: function(req,res){
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
             { $addToSet: { reactions: req.body } },
@@ -84,7 +84,7 @@ const thoughtController = {
             res.status(400).json(err)
         })
     },
-    deleteReaction(req,res){
+    deleteReaction: function(req,res){
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
@@ -103,4 +103,4 @@ const thoughtController = {
         })
     }
 }
-module.export=thoughtController
+module.exports=thoughtController
